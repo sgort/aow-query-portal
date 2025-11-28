@@ -6,7 +6,7 @@ triply-static-webapp/QUICKREF.md
 triply-static-webapp/README.md
 triply-static-webapp/START_HERE.md
 triply-static-webapp/STRUCTURE.txt
-triply-static-webapp/assets/logo.svg
+triply-static-webapp/assets/logo.png
 triply-static-webapp/config.json
 triply-static-webapp/index.html
 triply-static-webapp/main.js

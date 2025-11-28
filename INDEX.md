@@ -63,7 +63,7 @@ triply-static-webapp/
 │
 ├── 🎨 Assets
 │   └── assets/
-│       └── logo.svg           ⚠️  REPLACE THIS
+│       └── logo.png           ⚠️  REPLACE THIS
 │
 ├── 🔧 Configuration Files
 │   ├── package.json           Node.js dependencies

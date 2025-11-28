@@ -104,10 +104,10 @@ if [ -d "assets" ]; then
     check_ok "assets/ directory exists"
     
     # Check for logo
-    if [ -f "assets/logo.png" ] || [ -f "assets/logo.svg" ]; then
+    if [ -f "assets/logo.png" ] || [ -f "assets/logo.png" ]; then
         check_ok "Logo file found"
     else
-        check_warning "No logo file found in assets/ (logo.png or logo.svg)"
+        check_warning "No logo file found in assets/ (logo.png or logo.png)"
     fi
 else
     check_warning "assets/ directory not found"

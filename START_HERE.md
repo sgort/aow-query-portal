@@ -37,7 +37,7 @@ cat CONFIG_EXAMPLES.md     # Configuration examples
 ```bash
 # config.json is already configured with your AOW queries!
 # Just update:
-# - organization.logo (replace assets/logo.svg)
+# - organization.logo (replace assets/logo.png)
 # - organization.primaryColor (if desired)
 # - Verify TriplyDB endpoint URL
 ```
@@ -153,7 +153,7 @@ For 10 organizations on Azure Static Web Apps:
 - Export formats
 
 ### Medium (Update assets & styles)
-- Logo (assets/logo.svg or logo.png)
+- Logo (assets/logo.png or logo.png)
 - Custom CSS (style.css)
 - Additional branding
 

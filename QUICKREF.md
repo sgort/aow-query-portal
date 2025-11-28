@@ -75,7 +75,7 @@ triply-static-webapp/
 │   ├── download-manager.js    - File downloads
 │   └── results-renderer.js    - Display results
 ├── 📁 assets/
-│   └── logo.svg               - ⚠️  REPLACE THIS
+│   └── logo.png               - ⚠️  REPLACE THIS
 ├── 📁 .github/workflows/
 │   └── azure-static-web-apps.yml - CI/CD
 └── 🔧 staticwebapp.config.json - Azure config
