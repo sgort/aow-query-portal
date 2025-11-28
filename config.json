@@ -50,32 +50,32 @@
   ],
   "exportFormats": [
     {
-      "id": "turtle",
-      "name": "Turtle",
-      "extension": "ttl",
-      "mediaType": "text/turtle",
-      "accept": "text/turtle"
-    },
-    {
-      "id": "rdfxml",
-      "name": "RDF/XML",
-      "extension": "rdf",
-      "mediaType": "application/rdf+xml",
-      "accept": "application/rdf+xml"
-    },
-    {
-      "id": "jsonld",
-      "name": "JSON-LD",
-      "extension": "jsonld",
-      "mediaType": "application/ld+json",
-      "accept": "application/ld+json"
-    },
-    {
       "id": "json",
       "name": "JSON",
       "extension": "json",
       "mediaType": "application/sparql-results+json",
       "accept": "application/sparql-results+json"
+    },
+    {
+      "id": "csv",
+      "name": "CSV",
+      "extension": "csv",
+      "mediaType": "text/csv",
+      "accept": "text/csv"
+    },
+    {
+      "id": "tsv",
+      "name": "TSV",
+      "extension": "tsv",
+      "mediaType": "text/tab-separated-values",
+      "accept": "text/tab-separated-values"
+    },
+    {
+      "id": "xml",
+      "name": "XML",
+      "extension": "xml",
+      "mediaType": "application/sparql-results+xml",
+      "accept": "application/sparql-results+xml"
     }
   ]
 }

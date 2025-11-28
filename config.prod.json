@@ -7,7 +7,7 @@
     "primaryColor": "#003DA5"
   },
   "triplydb": {
-    "endpoint": "http://localhost:3001/sparql",
+    "endpoint": "https://api.open-regels.triply.cc/datasets/stevengort/aow-leeftijd-service/services/aow-leeftijd-service/sparql",
     "account": "stevengort",
     "dataset": "aow-leeftijd-service"
   },
@@ -46,43 +46,36 @@
       "description": "Overzicht van juridische bronnen en wetgeving",
       "category": "Legal",
       "sparql": "PREFIX cpsv-ap: <http://data.europa.eu/m8g/>\nPREFIX dct: <http://purl.org/dc/terms/>\nPREFIX dcat: <http://www.w3.org/ns/dcat#>\nPREFIX cprmv: <https://cprmv.open-regels.nl/0.3.0/>\n\nSELECT ?resource ?title ?accessURL ?implements ?implementsVersion\nWHERE {\n  ?service a cpsv-ap:PublicService ;\n           cpsv-ap:hasLegalResource ?resource .\n  ?resource dct:title ?title ;\n            dcat:accessURL ?accessURL .\n  OPTIONAL { ?resource cprmv:implements ?implements . }\n  OPTIONAL { ?resource cprmv:implementsVersion ?implementsVersion . }\n  \n  FILTER(LANG(?title) = \"nl\")\n}"
-    },
-    {
-      "id": "full-dataset",
-      "name": "Volledige Dataset",
-      "description": "Exporteer alle triples uit de dataset",
-      "category": "Export",
-      "sparql": "CONSTRUCT { ?s ?p ?o } WHERE { ?s ?p ?o }"
     }
   ],
   "exportFormats": [
-    {
-      "id": "turtle",
-      "name": "Turtle",
-      "extension": "ttl",
-      "mediaType": "text/turtle",
-      "accept": "text/turtle"
-    },
-    {
-      "id": "rdfxml",
-      "name": "RDF/XML",
-      "extension": "rdf",
-      "mediaType": "application/rdf+xml",
-      "accept": "application/rdf+xml"
-    },
-    {
-      "id": "jsonld",
-      "name": "JSON-LD",
-      "extension": "jsonld",
-      "mediaType": "application/ld+json",
-      "accept": "application/ld+json"
-    },
     {
       "id": "json",
       "name": "JSON",
       "extension": "json",
       "mediaType": "application/sparql-results+json",
       "accept": "application/sparql-results+json"
+    },
+    {
+      "id": "csv",
+      "name": "CSV",
+      "extension": "csv",
+      "mediaType": "text/csv",
+      "accept": "text/csv"
+    },
+    {
+      "id": "tsv",
+      "name": "TSV",
+      "extension": "tsv",
+      "mediaType": "text/tab-separated-values",
+      "accept": "text/tab-separated-values"
+    },
+    {
+      "id": "xml",
+      "name": "XML",
+      "extension": "xml",
+      "mediaType": "application/sparql-results+xml",
+      "accept": "application/sparql-results+xml"
     }
   ]
 }
