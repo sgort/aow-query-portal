@@ -1,0 +1,88 @@
+{
+  "organization": {
+    "name": "AOW Leeftijd Service",
+    "shortName": "aow-service",
+    "description": "Publieke toegang tot AOW-leeftijd beslissingsregels",
+    "logo": "./assets/logo.png",
+    "primaryColor": "#003DA5"
+  },
+  "triplydb": {
+    "endpoint": "http://localhost:3001/sparql",
+    "account": "stevengort",
+    "dataset": "aow-leeftijd-service"
+  },
+  "queries": [
+    {
+      "id": "temporal-rules",
+      "name": "Temporal Rules",
+      "description": "Bekijk alle temporele regels met geldigheidsperiodes en betrouwbaarheid",
+      "category": "Rules",
+      "sparql": "PREFIX cpsv-ap: <http://data.europa.eu/m8g/>\nPREFIX cprmv: <https://cprmv.open-regels.nl/0.3.0/>\nPREFIX dct: <http://purl.org/dc/terms/>\n\nSELECT ?rule ?title ?extends ?validFrom ?validUntil ?confidence ?description\nWHERE {\n  ?rule a cpsv-ap:Rule ;\n        dct:title ?title ;\n        cprmv:extends ?extends ;\n        cprmv:validFrom ?validFrom ;\n        cprmv:validUntil ?validUntil ;\n        cprmv:confidence ?confidence ;\n        dct:description ?description .\n  \n  FILTER(LANG(?title) = \"nl\")\n  FILTER(LANG(?description) = \"nl\")\n}\nORDER BY ?validFrom"
+    },
+    {
+      "id": "all-rules",
+      "name": "Alle Regels",
+      "description": "Overzicht van alle regels in de dataset",
+      "category": "Rules",
+      "sparql": "PREFIX cpsv-ap: <http://data.europa.eu/m8g/>\nPREFIX dct: <http://purl.org/dc/terms/>\n\nSELECT ?rule ?title ?description\nWHERE {\n  ?rule a cpsv-ap:Rule ;\n        dct:title ?title ;\n        dct:description ?description .\n  \n  FILTER(LANG(?title) = \"nl\")\n  FILTER(LANG(?description) = \"nl\")\n}\nORDER BY ?title"
+    },
+    {
+      "id": "public-service",
+      "name": "Publieke Dienst",
+      "description": "Informatie over de AOW Leeftijd publieke dienst",
+      "category": "Services",
+      "sparql": "PREFIX cpsv-ap: <http://data.europa.eu/m8g/>\nPREFIX dct: <http://purl.org/dc/terms/>\nPREFIX cprmv: <https://cprmv.open-regels.nl/0.3.0/>\n\nSELECT ?service ?title ?description ?goal ?implements ?implementsVersion\nWHERE {\n  ?service a cpsv-ap:PublicService ;\n           dct:title ?title ;\n           dct:description ?description ;\n           cpsv-ap:goal ?goal ;\n           cprmv:implements ?implements ;\n           cprmv:implementsVersion ?implementsVersion .\n  \n  FILTER(LANG(?title) = \"nl\")\n  FILTER(LANG(?description) = \"nl\")\n  FILTER(LANG(?goal) = \"nl\")\n}"
+    },
+    {
+      "id": "distribution-urls",
+      "name": "DMN Distributie URLs",
+      "description": "Haal downloadlinks op voor het DMN beslissingsmodel",
+      "category": "Distributions",
+      "sparql": "PREFIX dcat: <http://www.w3.org/ns/dcat#>\nPREFIX dct: <http://purl.org/dc/terms/>\nPREFIX cpsv-ap: <http://data.europa.eu/m8g/>\n\nSELECT ?rule ?distributionTitle ?format ?mediaType ?accessURL ?downloadURL ?byteSize\nWHERE {\n  ?rule a cpsv-ap:Rule ;\n        dcat:distribution ?distribution .\n  ?distribution dct:title ?distributionTitle ;\n                dct:format ?format ;\n                dcat:mediaType ?mediaType ;\n                dcat:accessURL ?accessURL ;\n                dcat:downloadURL ?downloadURL .\n  OPTIONAL { ?distribution dcat:byteSize ?byteSize . }\n  FILTER(LANG(?distributionTitle) = \"nl\" || LANG(?distributionTitle) = \"\")\n}\nORDER BY ?distributionTitle"
+    },
+    {
+      "id": "legal-resources",
+      "name": "Juridische Bronnen",
+      "description": "Overzicht van juridische bronnen en wetgeving",
+      "category": "Legal",
+      "sparql": "PREFIX cpsv-ap: <http://data.europa.eu/m8g/>\nPREFIX dct: <http://purl.org/dc/terms/>\nPREFIX dcat: <http://www.w3.org/ns/dcat#>\nPREFIX cprmv: <https://cprmv.open-regels.nl/0.3.0/>\n\nSELECT ?resource ?title ?accessURL ?implements ?implementsVersion\nWHERE {\n  ?service a cpsv-ap:PublicService ;\n           cpsv-ap:hasLegalResource ?resource .\n  ?resource dct:title ?title ;\n            dcat:accessURL ?accessURL .\n  OPTIONAL { ?resource cprmv:implements ?implements . }\n  OPTIONAL { ?resource cprmv:implementsVersion ?implementsVersion . }\n  \n  FILTER(LANG(?title) = \"nl\")\n}"
+    },
+    {
+      "id": "full-dataset",
+      "name": "Volledige Dataset",
+      "description": "Exporteer alle triples uit de dataset",
+      "category": "Export",
+      "sparql": "CONSTRUCT { ?s ?p ?o } WHERE { ?s ?p ?o }"
+    }
+  ],
+  "exportFormats": [
+    {
+      "id": "turtle",
+      "name": "Turtle",
+      "extension": "ttl",
+      "mediaType": "text/turtle",
+      "accept": "text/turtle"
+    },
+    {
+      "id": "rdfxml",
+      "name": "RDF/XML",
+      "extension": "rdf",
+      "mediaType": "application/rdf+xml",
+      "accept": "application/rdf+xml"
+    },
+    {
+      "id": "jsonld",
+      "name": "JSON-LD",
+      "extension": "jsonld",
+      "mediaType": "application/ld+json",
+      "accept": "application/ld+json"
+    },
+    {
+      "id": "json",
+      "name": "JSON",
+      "extension": "json",
+      "mediaType": "application/sparql-results+json",
+      "accept": "application/sparql-results+json"
+    }
+  ]
+}

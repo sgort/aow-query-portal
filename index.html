@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Publieke toegang tot linked data via SPARQL queries">
+  <title>AOW Portal</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <div class="header-content">
+        <img id="org-logo" src="" alt="Organization Logo" class="org-logo">
+        <div class="header-text">
+          <h1 id="org-name">Loading...</h1>
+          <p id="org-description" class="org-description"></p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="query-section">
+      <h2>Beschikbare Queries</h2>
+      <div class="query-selector">
+        <label for="query-select">Selecteer een query:</label>
+        <select id="query-select" class="query-dropdown">
+          <option value="">-- Kies een query --</option>
+        </select>
+      </div>
+
+      <div id="query-details" class="query-details" style="display: none;">
+        <div class="query-info">
+          <h3 id="query-name"></h3>
+          <p id="query-description" class="query-description"></p>
+          <details class="sparql-preview">
+            <summary>Bekijk SPARQL Query</summary>
+            <pre id="sparql-code" class="sparql-code"></pre>
+          </details>
+        </div>
+
+        <div class="action-buttons">
+          <button id="execute-btn" class="btn btn-primary">
+            <span class="btn-icon">▶</span>
+            Uitvoeren
+          </button>
+          <div class="export-buttons" id="export-buttons" style="display: none;">
+            <button class="btn btn-export" data-format="turtle">
+              <span class="btn-icon">⬇</span>
+              Turtle
+            </button>
+            <button class="btn btn-export" data-format="rdfxml">
+              <span class="btn-icon">⬇</span>
+              RDF/XML
+            </button>
+            <button class="btn btn-export" data-format="jsonld">
+              <span class="btn-icon">⬇</span>
+              JSON-LD
+            </button>
+            <button class="btn btn-export" data-format="json">
+              <span class="btn-icon">⬇</span>
+              JSON
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="results-section" class="results-section" style="display: none;">
+      <div class="results-header">
+        <h2>Resultaten</h2>
+        <div class="results-meta">
+          <span id="result-count" class="result-count"></span>
+          <span id="result-time" class="result-time"></span>
+        </div>
+      </div>
+      <div id="results-container" class="results-container"></div>
+    </section>
+
+    <section id="error-section" class="error-section" style="display: none;">
+      <div class="error-box">
+        <h3>⚠️ Fout</h3>
+        <p id="error-message"></p>
+        <details>
+          <summary>Technische details</summary>
+          <pre id="error-details"></pre>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>
+        Data beschikbaar onder 
+        <a href="http://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a>
+        | Aangedreven door 
+        <a href="https://triply.cc" target="_blank">TriplyDB</a>
+      </p>
+      <p class="footer-links">
+        <a id="triply-link" href="#" target="_blank">Bekijk in TriplyDB</a>
+        <span class="separator">•</span>
+        <a id="sparql-link" href="#" target="_blank">SPARQL Endpoint</a>
+      </p>
+    </div>
+  </footer>
+
+  <div id="loading-overlay" class="loading-overlay" style="display: none;">
+    <div class="spinner"></div>
+    <p>Query wordt uitgevoerd...</p>
+  </div>
+
+  <script type="module" src="/main.js"></script>
+</body>
+</html>
